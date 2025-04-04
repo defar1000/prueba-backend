@@ -1,9 +1,9 @@
 package co.com.prueba.dominio.useCases;
 
-import co.com.prueba.dominio.entities.Franquicia;
-import co.com.prueba.dominio.entities.Producto;
-import co.com.prueba.dominio.entities.Sucursal;
-import co.com.prueba.dominio.entities.getways.FranquiciaRepository;
+import co.com.prueba.dominio.models.Franquicia;
+import co.com.prueba.dominio.models.Producto;
+import co.com.prueba.dominio.models.Sucursal;
+import co.com.prueba.dominio.models.getways.FranquiciaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;
@@ -41,9 +41,9 @@ class FranquiciaUseCaseTest {
 
     @Test
     void nuevaSucursal() {
-        when(franquiciaRepository.nuevaSucursal(any())).thenReturn(Mono.just(getFranquicia()));
+        when(franquiciaRepository.nuevaSucursal(anyString(), any())).thenReturn(Mono.just(getFranquicia()));
 
-        Mono<Franquicia> mono = franquiciaUseCase.nuevaSucursal(any());
+        Mono<Franquicia> mono = franquiciaUseCase.nuevaSucursal(anyString(), any());
 
         StepVerifier.create(mono)
                 .expectNext(getFranquicia())
@@ -55,7 +55,7 @@ class FranquiciaUseCaseTest {
     void mayorStockEnSucursalesByFranquicia() {
         when(franquiciaRepository.getFranquicia(any())).thenReturn(Mono.just(getFranquicia()));
 
-        Mono<Map<String, Producto>> mono = franquiciaUseCase.mayorStockEnSucursalesByFranquicia(getFranquicia());
+        Mono<Map<String, Producto>> mono = franquiciaUseCase.mayorStockEnSucursalesByFranquicia(anyString());
 
         StepVerifier.create(mono)
                 .expectNext(getMapaConMayorStock())

@@ -1,8 +1,8 @@
 package co.com.prueba.dominio.useCases;
 
-import co.com.prueba.dominio.entities.Producto;
-import co.com.prueba.dominio.entities.Sucursal;
-import co.com.prueba.dominio.entities.getways.SucursalRepository;
+import co.com.prueba.dominio.models.Producto;
+import co.com.prueba.dominio.models.Sucursal;
+import co.com.prueba.dominio.models.getways.SucursalRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;
@@ -26,9 +26,9 @@ class SucursalUseCaseTest {
 
     @Test
     void agregarProducto() {
-        when(sucursalRepository.agregarProducto(any())).thenReturn(Mono.just(getSucursal()));
+        when(sucursalRepository.agregarProducto(anyString(), anyString(), any())).thenReturn(Mono.just(getSucursal()));
 
-        Mono<Sucursal> mono = sucursalUseCase.agregarProducto(any());
+        Mono<Sucursal> mono = sucursalUseCase.agregarProducto(anyString(), anyString(), any());
 
         StepVerifier.create(mono)
                 .expectNext(getSucursal())
@@ -38,9 +38,9 @@ class SucursalUseCaseTest {
 
     @Test
     void eliminarProducto() {
-        when(sucursalRepository.eliminarProducto(any())).thenReturn(Mono.just(getSucursal()));
+        when(sucursalRepository.eliminarProducto(anyString(), anyString(), anyString())).thenReturn(Mono.just(getSucursal()));
 
-        Mono<Sucursal> mono = sucursalUseCase.eliminarProducto(any());
+        Mono<Sucursal> mono = sucursalUseCase.eliminarProducto(anyString(), anyString(), any());
 
         StepVerifier.create(mono)
                 .expectNext(getSucursal())

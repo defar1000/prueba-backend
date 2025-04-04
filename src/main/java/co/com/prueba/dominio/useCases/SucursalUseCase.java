@@ -1,8 +1,8 @@
 package co.com.prueba.dominio.useCases;
 
-import co.com.prueba.dominio.entities.Producto;
-import co.com.prueba.dominio.entities.Sucursal;
-import co.com.prueba.dominio.entities.getways.SucursalRepository;
+import co.com.prueba.dominio.models.Producto;
+import co.com.prueba.dominio.models.Sucursal;
+import co.com.prueba.dominio.models.getways.SucursalRepository;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
@@ -10,10 +10,10 @@ import reactor.core.publisher.Mono;
 public class SucursalUseCase {
     private final SucursalRepository sucursalRepository;
 
-    Mono<Sucursal> agregarProducto(Producto producto) {
-        return sucursalRepository.agregarProducto(producto);
+    public Mono<Sucursal> agregarProducto(String nombreFranquicia, String nombreSucursal, Producto producto) {
+        return sucursalRepository.agregarProducto(nombreFranquicia, nombreSucursal, producto);
     }
-    Mono<Sucursal> eliminarProducto(Producto producto) {
-        return sucursalRepository.eliminarProducto(producto);
+    public Mono<Sucursal> eliminarProducto(String nombreFranquicia, String nombreSucursal, String nombreProducto) {
+        return sucursalRepository.eliminarProducto(nombreFranquicia, nombreSucursal, nombreProducto);
     }
 }

@@ -1,9 +1,9 @@
 package co.com.prueba.dominio.useCases;
 
-import co.com.prueba.dominio.entities.Franquicia;
-import co.com.prueba.dominio.entities.Producto;
-import co.com.prueba.dominio.entities.Sucursal;
-import co.com.prueba.dominio.entities.getways.FranquiciaRepository;
+import co.com.prueba.dominio.models.Franquicia;
+import co.com.prueba.dominio.models.Producto;
+import co.com.prueba.dominio.models.Sucursal;
+import co.com.prueba.dominio.models.getways.FranquiciaRepository;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
@@ -16,14 +16,16 @@ public class FranquiciaUseCase {
     private final FranquiciaRepository franquiciaRepository;
 
     public Mono<Franquicia> crearFranquicia(String nombre) {
-        return franquiciaRepository.crearFranquicia(nombre);
+        Franquicia franquicia = Franquicia.builder().nombre(nombre).build();
+        return franquiciaRepository.crearFranquicia(franquicia);
     }
-    public Mono<Franquicia> nuevaSucursal(Sucursal sucursal) {
-        return franquiciaRepository.nuevaSucursal(sucursal);
+    public Mono<Franquicia> nuevaSucursal(String nombreFranquicia, String nombreSucursal) {
+        Sucursal sucursal = Sucursal.builder().nombre(nombreSucursal).build();
+        return franquiciaRepository.nuevaSucursal(nombreFranquicia, sucursal);
     }
 
-    public Mono<Map<String, Producto>> mayorStockEnSucursalesByFranquicia(Franquicia franquicia) {
-        return franquiciaRepository.getFranquicia(franquicia.getNombre())
+    public Mono<Map<String, Producto>> mayorStockEnSucursalesByFranquicia(String nombreFranquicia) {
+        return franquiciaRepository.getFranquicia(nombreFranquicia)
                 .map(f -> {
                     Map<String, Producto> mapa = new HashMap<>();
                     for(Sucursal sucursal: f.getSucursales()) {

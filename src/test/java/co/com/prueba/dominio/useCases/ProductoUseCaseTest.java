@@ -1,7 +1,7 @@
 package co.com.prueba.dominio.useCases;
 
-import co.com.prueba.dominio.entities.Producto;
-import co.com.prueba.dominio.entities.getways.ProductoRepository;
+import co.com.prueba.dominio.models.Producto;
+import co.com.prueba.dominio.models.getways.ProductoRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;
@@ -22,9 +22,9 @@ class ProductoUseCaseTest {
 
     @Test
     void setStock() {
-        when(productoRepository.setStock(anyInt())).thenReturn(Mono.just(getProducto()));
+        when(productoRepository.setStock(anyString(), anyString(), anyString(), anyInt())).thenReturn(Mono.just(getProducto()));
 
-        Mono<Producto> mono = productoUseCase.setStock(anyInt());
+        Mono<Producto> mono = productoUseCase.setStock(anyString(), anyString(), anyString(), anyInt());
 
         StepVerifier.create(mono)
                 .expectNext(getProducto())

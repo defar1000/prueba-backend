@@ -1,4 +1,4 @@
-package co.com.prueba.dominio.entities;
+package co.com.prueba.dominio.models;
 
 import lombok.*;
 
@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @EqualsAndHashCode
-public class Franquicia {
+public class Sucursal {
     private String nombre;
-    private List<Sucursal> sucursales;
+    private List<Producto> productosOfertados;
 }
