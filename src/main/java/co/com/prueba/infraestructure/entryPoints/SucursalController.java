@@ -6,16 +6,13 @@ import co.com.prueba.dominio.models.getways.SucursalRepository;
 import co.com.prueba.dominio.useCases.SucursalUseCase;
 import co.com.prueba.infraestructure.entryPoints.models.ProductoRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
-@RestController("api/v1/sucursal")
-@RequiredArgsConstructor
+@RestController
+@RequestMapping("api/v1/sucursal")
 public class SucursalController {
-    private SucursalUseCase sucursalUseCase;
+    private final SucursalUseCase sucursalUseCase;
 
     public SucursalController(SucursalRepository sucursalRepository) {
         sucursalUseCase = new SucursalUseCase(sucursalRepository);
@@ -35,5 +32,4 @@ public class SucursalController {
                                           @PathVariable String nombreProducto) {
         return sucursalUseCase.eliminarProducto(nombreFranquicia, nombreSucursal, nombreProducto);
     }
-
 }

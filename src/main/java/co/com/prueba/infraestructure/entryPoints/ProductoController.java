@@ -7,13 +7,14 @@ import co.com.prueba.infraestructure.entryPoints.models.ProductoRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
-@RestController("api/v1/producto")
-@RequiredArgsConstructor
+@RestController
+@RequestMapping("api/v1/producto")
 public class ProductoController {
-    private ProductoUseCase productoUseCase;
+    private final ProductoUseCase productoUseCase;
 
     public ProductoController(ProductoRepository productoRepository) {
         productoUseCase = new ProductoUseCase(productoRepository);

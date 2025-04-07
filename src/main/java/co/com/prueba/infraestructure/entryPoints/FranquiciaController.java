@@ -11,10 +11,10 @@ import reactor.core.publisher.Mono;
 
 import java.util.Map;
 
-@RestController("api/v1/franquicia")
-@RequiredArgsConstructor
+@RestController
+@RequestMapping("api/v1/franquicia")
 public class FranquiciaController {
-    private FranquiciaUseCase franquiciaUseCase;
+    private final FranquiciaUseCase franquiciaUseCase;
 
     public FranquiciaController(FranquiciaRepository franquiciaRepository) {
         franquiciaUseCase = new FranquiciaUseCase(franquiciaRepository);
