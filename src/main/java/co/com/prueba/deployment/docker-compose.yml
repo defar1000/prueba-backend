@@ -1,0 +1,35 @@
+version: '3.1'
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "root"
+      MONGO_INITDB_ROOT_PASSWORD: "root"
+    volumes:
+      - mongodb_data:/data/db
+    restart: always
+    networks:
+      - prueba-backend-red
+
+  app:
+    image: prueba-backend
+    container_name: prueba-backend
+    ports:
+      - "8080:8080"
+    environment:
+      USER_DB: "root"
+      PASS_DB: "root"
+      HOST_DB: "mongodb"
+    depends_on:
+      - mongo
+    networks:
+      - prueba-backend-red
+
+volumes:
+  mongodb_data:
+
+networks:
+  prueba-backend-red:
