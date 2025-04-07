@@ -43,8 +43,12 @@ La aplicación puede ser desplegada con docker siguiendo los siguientes pasos:
         docker build -t prueba-backend -f src/main/java/co/com/prueba/deployment/Dockerfile .
 2. Ejecutar contenedores:
 
-    Mediante docker-compose se ejecuta tanto la base de datos mongo, como la aplicación, para esto ejecutar
+   Mediante docker-compose se ejecuta tanto la base de datos mongo, como la aplicación, para esto ejecutar
 
+         cd src/main/java/co/com/prueba/deployment
+      
+   y luego
+            
          docker-compose up -d
 
 3. Se puede verificar la ejecución de los dos contenedores ejecutando
