@@ -2,7 +2,6 @@ package co.com.prueba.dominio.models;
 
 import lombok.*;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -18,8 +17,7 @@ public class Sucursal {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (!(obj instanceof Sucursal)) return false;
-        Sucursal sucursal = (Sucursal) obj;
+        if (!(obj instanceof Sucursal sucursal)) return false;
         return sucursal.getNombre().equals(this.nombre);
     }
 

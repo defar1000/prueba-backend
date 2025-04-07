@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.mockito.Mockito.*;
 
@@ -40,7 +40,7 @@ class SucursalUseCaseTest {
     void eliminarProducto() {
         when(sucursalRepository.eliminarProducto(anyString(), anyString(), anyString())).thenReturn(Mono.just(getSucursal()));
 
-        Mono<Sucursal> mono = sucursalUseCase.eliminarProducto(anyString(), anyString(), any());
+        Mono<Sucursal> mono = sucursalUseCase.eliminarProducto(anyString(), anyString(), anyString());
 
         StepVerifier.create(mono)
                 .expectNext(getSucursal())
@@ -52,13 +52,13 @@ class SucursalUseCaseTest {
         return new Sucursal("Sucursal", getProductos());
     }
 
-    List<Producto> getProductos(){
+    Set<Producto> getProductos(){
         String PRODUCTO = "Producto";
-        List<Producto> lista = new ArrayList<>();
+        Set<Producto> set = new HashSet<>();
         for (int i = 1; i <= 10; i++) {
-            lista.add(newProducto(PRODUCTO+i,i));
+            set.add(newProducto(PRODUCTO+i,i));
         }
-        return lista;
+        return set;
     }
 
     Producto newProducto(String name, int stock){

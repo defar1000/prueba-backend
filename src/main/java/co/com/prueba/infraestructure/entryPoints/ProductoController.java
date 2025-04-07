@@ -4,7 +4,6 @@ import co.com.prueba.dominio.models.Producto;
 import co.com.prueba.dominio.models.getways.ProductoRepository;
 import co.com.prueba.dominio.useCases.ProductoUseCase;
 import co.com.prueba.infraestructure.entryPoints.models.ProductoRequest;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

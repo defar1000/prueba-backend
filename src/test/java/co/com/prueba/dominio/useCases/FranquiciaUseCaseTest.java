@@ -9,10 +9,7 @@ import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.mockito.Mockito.*;
 
@@ -79,9 +76,9 @@ class FranquiciaUseCaseTest {
                 .build();
     }
 
-    List<Sucursal> getSucursales(){
+    Set<Sucursal> getSucursales(){
         String SUCURSAL = "Sucursal";
-        List<Sucursal> lista = new ArrayList<>();
+        Set<Sucursal> lista = new HashSet<>();
         for (int i = 1; i <= 5; i++) {
             lista.add(newSucursal(SUCURSAL+i));
         }
@@ -92,9 +89,9 @@ class FranquiciaUseCaseTest {
         return new Sucursal(name, getProductos());
     }
 
-    List<Producto> getProductos(){
+    Set<Producto> getProductos(){
         String PRODUCTO = "Producto";
-        List<Producto> lista = new ArrayList<>();
+        Set<Producto> lista = new HashSet<>();
         for (int i = 1; i <= 10; i++) {
             lista.add(newProducto(PRODUCTO+i,i));
         }

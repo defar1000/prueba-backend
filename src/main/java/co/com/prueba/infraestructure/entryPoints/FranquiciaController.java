@@ -5,7 +5,6 @@ import co.com.prueba.dominio.models.Producto;
 import co.com.prueba.dominio.models.getways.FranquiciaRepository;
 import co.com.prueba.dominio.useCases.FranquiciaUseCase;
 import co.com.prueba.infraestructure.entryPoints.models.FranquiciaRequest;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 

@@ -6,12 +6,9 @@ import co.com.prueba.dominio.models.Sucursal;
 import co.com.prueba.dominio.models.getways.FranquiciaRepository;
 import co.com.prueba.dominio.models.getways.ProductoRepository;
 import co.com.prueba.dominio.models.getways.SucursalRepository;
-import co.com.prueba.infraestructure.drivenAdapters.dbAdapter.FranquiciaDBRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-
-import javax.management.AttributeNotFoundException;
 
 @Service
 @RequiredArgsConstructor
